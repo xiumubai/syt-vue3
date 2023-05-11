@@ -3,8 +3,8 @@
 
 
   <el-dialog
-    :before-close="handleBeforeClose"
     v-model="userInfoStore.isShowLoginDialog"
+    @close="handleClose"
     title="用户登陆"
     width="750px">
     <el-row class="login_main">
@@ -265,14 +265,15 @@ const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
   formEl.resetFields()
 }
-const handleBeforeClose = (done: any) => {
+// 关闭的回调
+const handleClose = () => {
+  console.log('handleClose')
   // 重置登陆模式
   loginModeInfo.loginMode = 0
   // 重置所有信息
   resetForm(userFormRef.value)
   // 清空定时器
   userInfoStore.clearTimer()
-  done()
 }
 // 监视属性
 watch(() => loginModeInfo.loginMode, (newVal) => {
