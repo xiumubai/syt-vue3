@@ -46,7 +46,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import {ref, reactive, toRefs, computed, watch, onMounted} from "vue"
+import {ref, computed, onMounted} from "vue"
 import { useRoute, useRouter } from "vue-router"
 import {getScheduleInfo} from "@/api/modules/hospital";
 import {ScheduleListInterfaceRes} from "@/api/modules/hospital/interface";
@@ -60,7 +60,7 @@ const scheduleInfo = ref({} as ScheduleListInterfaceRes)
 const checkPatientRef = ref<InstanceType<typeof Check_patient>>()
 // 选择的就诊人
 const checkedPatient = computed(() => {
-  return  checkPatientRef.value?.checkedPatient || {}
+  return  checkPatientRef.value?.checkedPatient || {} as any
 })
 // 确认挂号
 const handleClickConfirm = async () => {
@@ -109,9 +109,6 @@ onMounted(() => {
   width: 100%;
   .box_card{
     min-height: 600px;
-  }
-  .descriptions_content {
-
   }
 
     :deep(.el-descriptions__label){

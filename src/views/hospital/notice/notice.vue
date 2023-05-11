@@ -81,9 +81,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.registration_wrapper {
-
-}
 h2 {
   font-size:21px;
 }

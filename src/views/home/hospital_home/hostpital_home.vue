@@ -162,7 +162,7 @@ const getDistrictList = async () => {
       parentId: 0,
       name: "全部",
       value: "",
-      dictCode: "",
+      dictCode: null,
       hasChildren: false
     }
     pageData.districtDataList = [whole, ...res]

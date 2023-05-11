@@ -8,7 +8,7 @@
     <el-container class="main_wrapper">
       <el-aside class="main_menu">
         <el-menu
-          :default-active="route.meta.key"
+          :default-active="route.meta.key as string"
           class="el-menu-vertical-demo"
           @select="handleSelect">
           <el-menu-item index="certification">

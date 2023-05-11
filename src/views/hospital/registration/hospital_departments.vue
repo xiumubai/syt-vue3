@@ -241,7 +241,7 @@ onMounted(async () => {
 
 
 </script>
-<style scoped>
+<style scoped lang="scss">
 .commodity {
   /* 最大的盒子样式 */
   display: flex;

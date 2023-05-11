@@ -41,9 +41,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.suspend_wrapper {
-
-}
 h2{
   font-size: 21px;
 }

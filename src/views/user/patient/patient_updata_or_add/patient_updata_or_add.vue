@@ -270,9 +270,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.card_wrapper {
-
-}
 .box_card {
   min-height: 600px;
 }

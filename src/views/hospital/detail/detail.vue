@@ -65,9 +65,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.registration_wrapper {
-
-}
 .title_container{
   display:flex;
   h2 {
@@ -77,9 +74,6 @@ onMounted(() => {
   .level{
     margin-left: 10px;
     margin-top: 5px;
-  }
-  .level_icon{
-
   }
 }
 .hospital-img {
