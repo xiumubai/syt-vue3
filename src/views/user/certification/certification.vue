@@ -71,11 +71,12 @@ export default defineComponent({
 <script setup lang="ts">
 import { ref, reactive, toRefs, computed, watch, onMounted } from "vue"
 import { useRoute, useRouter } from "vue-router"
-import {getCertTypeList, reqUserInfo} from "@/api/modules/user"
+import {getCertTypeList, reqUserInfo, userAuth} from "@/api/modules/user"
 import type { FormInstance, FormRules } from "element-plus"
 import UpLoadImg from "@/components/upload-img/upload-img.vue"
 import samplePicture from "@/assets/images/auth_example.png"
 import {CertificatesTypeInterfaceRes, UserInfoInterfaceRes} from "@/api/modules/user/interface";
+import {ElMessage} from "element-plus";
 const route = useRoute()
 const pageInfo = reactive({
   userRealNameInfo: {} as UserInfoInterfaceRes,
@@ -90,7 +91,7 @@ const certificatesTypeName = computed(() => {
 // 图片上传相关
 const upLoadImgRef = ref('') as any // 获取子组件ref
 // 图片上传 更新图片列表
-const updateUpLoadFileListHandler = (newFileList: []) => {
+const updateUpLoadFileListHandler = (newFileList: any) => {
   ruleForm.fileList = newFileList
 }
 // 表单相关
@@ -118,9 +119,19 @@ const rules = reactive<FormRules>({
 })
 const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return
-  await formEl.validate((valid, fields) => {
+  await formEl.validate(async (valid, fields) => {
     if (valid) {
       console.log("submit!")
+      const params = {
+        name: ruleForm.name,
+        certificatesNo: ruleForm.certificatesNo,
+        certificatesType: ruleForm.certificatesType,
+        certificatesUrl: ruleForm.fileList[0].response.data
+      }
+      await userAuth(params)
+      ElMessage.success('提交成功')
+      // 更新信息
+      getUserRealNameInfo()
     } else {
       console.log("error submit!", fields)
     }
