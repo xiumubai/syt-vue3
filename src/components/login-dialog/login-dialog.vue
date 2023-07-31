@@ -228,7 +228,7 @@ const wechatLogin = async () => {
       id: 'weixinLogin', // 需要显示的容器id
       appid: res.appid, // 公众号appid wx*******
       scope: res.scope, // 网页默认即可
-      redirect_uri: res.redirectUri, // 授权成功后回调的url
+      redirect_uri:decodeURIComponent(res.redirectUri), // 授权成功后回调的url
       state: res.state, // 可设置为简单的随机数加session用来校验
       style: 'black', // 提供"black"、"white"可选。二维码的样式
       href: '', // 外部css文件url，需要https
